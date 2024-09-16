@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternas Pitagóricas</title>
+</head>
+<body>
+    <h1>Gerar Ternas Pitagóricas</h1>
+    <label for="limite">Digite o limite:</label>
+    <input type="number" id="limite" value="100">
+    <button onclick="gerarTernasPitagoricas()">Gerar Ternas</button>
+
+    <h2>Resultado:</h2>
+    <ul id="resultado"></ul>
+
+    <script>
+        function gerarTernasPitagoricas() {
+            const limite = parseInt(document.getElementById('limite').value);
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = ''; // Limpa os resultados anteriores
+            for (let a = 1; a < limite; a++) {
+                for (let b = a; b < limite; b++) {
+                    let c = Math.sqrt(a * a + b * b);
+                    if (Number.isInteger(c) && c <= limite) {
+                        const li = document.createElement('li');
+                        li.textContent = `(${a}, ${b}, ${c})`;
+                        resultado.appendChild(li);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
